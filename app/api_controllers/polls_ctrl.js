@@ -1,6 +1,6 @@
-//File: controllers/tvshows.js
 var mongoose = require('mongoose');  
-var Poll  = mongoose.model('Poll');
+var Poll = require('../models/Poll');
+
 
 //GET - Return all polls -----------------------------------------
 exports.findUserPolls = function(req, res) {  
@@ -22,8 +22,6 @@ exports.findUserPolls = function(req, res) {
 //POST - Create poll ----------------------------------------------
 exports.createPoll = function(req , res){
 	console.log('POST');
-   	console.log(req.body);
-
 	var poll = new Poll({
 		user : req.body.user,
 		options : req.body.options,
@@ -42,8 +40,6 @@ exports.createPoll = function(req , res){
 //DELETE - Delete a poll -----------------------------------------
 exports.deletePoll = function(req , res){
 	console.log('DELETE');
-	console.log('id_ '+req.params.id)
-
 	Poll.remove({
 		_id : req.params.id
 	}, function(err){
