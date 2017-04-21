@@ -1,61 +1,31 @@
-<html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="main.js"></script>
-<script src="controller.js"></script>
-<script src="directives.js"></script>
-<script src="services.js"></script>
-<body ng-app="myApp" ng-controller="myCtrl">
+<html ng-app="votingApp">
+    <head>
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+      <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+      <link rel='stylesheet' href='/stylesheets/style.css' /> 
+    </head>
+    <body>
 
-<p>Try to change the names.</p>
-<my-directive></my-directive>
-<div>
-
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
-<br>
-Full Name: {{fullName()}}
-
-</div>
-
-<ul>
-  <li ng-repeat="x in names">
-    {{ x.name + ', ' + x.country }}
-  </li>
-</ul>
-
-<form name="myForm" ng-init="myText = 'post@myweb.com'">
-    Email:
-    <input type="email" name="myAddress" ng-model="myText" required>
-    <h1>Status</h1>
-    {{myForm.myAddress.$valid}}
-    {{myForm.myAddress.$dirty}}
-    {{myForm.myAddress.$touched}}
-</form>
+       
+	<div id="main">
+	 <div ng-view></div>
+        </div>
 
 
-<div ng-controller="myCtrl2">
-    <h1 ng-click="changeName()">{{firstname}}</h1>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+          <script src="main.js"></script>
+          <script src="auth/login/login.controller.js"></script>
+	  <script src="register/register.controller.js"></script>
+          <script src="polls/user/userPolls.controller.js"></script>
+          <script src="polls/user/createPoll.controller.js"></script>
+          <script src="directives/navigation.directive.js"></script>
+	  <script src="directives/navigation.controller.js"></script>
+	  <script src="services.js"></script>
+    </body>
+    </html>
 
-<div ng-controller="customersCtrl">
-    <h1>{{myUrl}}</h1>
-</div>
 
-<div ng-controller="myCtrl3">
-    <h1>{{myHeader}}</h1>
-</div>
 
-<div ng-controller="myCtrl4">
-    <h1>{{theTime}}</h1>
-</div>
 
-<div ng-controller="myCtrl5">
-    <h1>{{hex}}</h1>
-</div>
-
-<div ng-controller="callApi">
-    <h1>{{myWelcome}}</h1>
-</div>
-
-</body>
-</html>

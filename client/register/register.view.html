@@ -1,0 +1,22 @@
+<navigation-directive></navigation-directive>
+<div class="container">
+	<div class="row">
+			<form name="form" ng-submit="register()" role="form">
+		 <div class="control">
+                    <div class="label">Name</div>
+		    <input type="text" name="username" id="name" class="form-control" ng-model="name" required />
+                </div>
+		<div class="control">
+                    <div class="label">Email</div>
+		    <input type="text" name="email" id="email" class="form-control" ng-model="email" required />
+                </div>
+		<div class="control">
+                    <div class="label">Password</div>
+		    <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                </div>
+		<div align="center">
+		 <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Register</button>	
+                </div>
+			</form>
+	</div>
+</div>

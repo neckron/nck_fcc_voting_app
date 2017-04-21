@@ -1,0 +1,19 @@
+
+<navigation-directive></navigation-directive>
+<div class="container">
+
+  <table>
+    <thead>
+      <tr><th colspan="4">User polls</th></tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="poll in userPolls">
+        <td>{{poll.title}}</td>
+        <td> <a href="editPoll">Edit</a></td>
+        <td><a class="btn" ng-click="delete(poll)">Delete</a></td>
+      </tr>
+      <td> <a href="#createPoll">Create a new Poll</a></td>
+    </tbody>
+  </table> 
+</div>
+

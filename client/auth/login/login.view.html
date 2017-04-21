@@ -1,0 +1,40 @@
+
+<navigation-directive></navigation-directive>
+<div class="container">
+	<div class="row login_box">
+	    <div class="col-md-12 col-xs-12" align="center">
+            <div class="line"><h3>12 : 30 AM</h3></div>
+            <div class="outter"><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="image-circle"/></div>   
+	    </div>
+        <div class="col-md-6 col-xs-6 follow line" align="center">
+            <h3>
+                 125651 <br/> <span>FOLLOWERS</span>
+            </h3>
+        </div>
+        <div class="col-md-6 col-xs-6 follow line" align="center">
+            <h3>
+                 125651 <br/> <span>FOLLOWERS</span>
+            </h3>
+        </div>
+        
+        <div class="col-md-12 col-xs-12 login_control">
+                	<form name="form" ng-submit="login()" role="form">
+                <div class="control">
+                    <div class="label">Email Address</div>
+		    <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+                </div>
+                
+                <div class="control">
+                     <div class="label">Password</div>
+		     <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                </div>
+                <div align="center">
+		 <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Login</button>	
+                </div>
+			</form>
+        </div>
+        
+        
+            
+    </div>
+</div>

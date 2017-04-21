@@ -1,4 +1,4 @@
-app.controller('myCtrl', function($scope) {
+/*app.controller('myCtrl', function($scope) {
     $scope.firstName= "John";
     $scope.lastName= "Doe";
     $scope.names=[{name:'Jani',country:'Norway'},
@@ -53,3 +53,42 @@ app.controller('callApi', function($scope,$http){
 
 }
 );
+*/
+
+(function () {
+
+
+angular.module('votingApp').controller('loginCtrl',loginCtrl);
+
+loginCtrl.$inject = ['$scope' , '$rootScope', 'AUTH_EVENTS', 'authentication'];
+
+
+function loginCtrl(authentication){
+	var vm = this;
+	vm.credentials = {
+      	 email : "",
+         password : ""
+       };
+}
+
+
+/*aipp.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService) {
+  $scope.credentials = {
+    username: '',
+    password: ''
+  };*/
+  
+ vm.onSubmit = function () {
+	  console.log('aqui');
+    AuthService.login(vm.credentials).then(function (user) {
+      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+      $scope.setCurrentUser(user);
+    }, function () {
+      $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+    }); 
+ }
+	
+  ;
+})
+
+})();

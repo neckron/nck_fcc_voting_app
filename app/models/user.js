@@ -28,6 +28,12 @@ userSchema.methods.validPassword = function(password) {
   return this.hash === hash;
 };
 
+
+userSchema.methods.metodo = function(){
+	console.log('hola'+password);
+}
+
+
 userSchema.methods.generateJwt = function() {
   var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
