@@ -1,0 +1,24 @@
+
+<navigation-directive></navigation-directive>
+<div class="container center">
+  
+  <h1 class='head'> Polls </h1>
+  <a ng-show='loggedIn' href="#createPoll" class='btn btn-info' ng-click='vote(option)'>
+    <i class="fa fa-plus"></i> Create a new Poll
+  </a>
+
+  <table class='custom-table'>
+    <tbody>
+      <tr ng-repeat="poll in userPolls">
+        <td>{{poll.title}}</td>
+        <td> <a href="#poll" class='btn btn-primary btn-sm' ng-click='selectPoll(poll)'><i class="fa fa-Rocket"></i> View</a></td>
+        <td ng-show='loggedIn'>
+          <a class="btn btn-danger btn-sm" ng-click="delete(poll)"><i class="fa fa-times"></i>Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+

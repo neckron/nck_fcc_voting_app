@@ -1,6 +1,5 @@
-angular
-  .module('votingApp')
-  .service('authService', ['$http' , 'userCredentialService' ,
+var app = angular.module('votingApp');
+app.service('authService', ['$http' , 'userCredentialService' ,
   
   function ($http , userCredentialService) {
     //  var authService = {};
@@ -27,7 +26,7 @@ angular
 
   return {
     login : login,
-    register : register,
+    register : register
   };
 		
 }]);

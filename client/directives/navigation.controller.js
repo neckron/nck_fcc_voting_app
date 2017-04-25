@@ -1,9 +1,10 @@
-angular.module('votingApp').controller('navigationCtrl', ['authService' ,
+angular.module('votingApp').controller('navigationCtrl', ['userCredentialService' ,
 
- function (authService){
+ function (userCredentialService){
  	var vm = this;
-	 vm.isLoggedIn = authService.isLoggedIn();
-	 //TODO
+	 vm.isLoggedIn = userCredentialService.isLoggedIn();
+	 vm.currentUser = userCredentialService.currentUser();
+
  }
 
 ]);

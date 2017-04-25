@@ -7,24 +7,32 @@
     </head>
     <body>
 
-       
-	<div id="main">
-	 <div ng-view></div>
-        </div>
+    <div id="main">
+      <div ng-view></div>
+    </div>
 
+    <!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-          <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-          <script src="main.js"></script>
-          <script src="auth/login/login.controller.js"></script>
-	  <script src="register/register.controller.js"></script>
-          <script src="polls/user/userPolls.controller.js"></script>
-          <script src="polls/user/createPoll.controller.js"></script>
-          <script src="directives/navigation.directive.js"></script>
-	  <script src="directives/navigation.controller.js"></script>
-	  <script src="services.js"></script>
-    </body>
-    </html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+    <script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.js"></script>
+    <script src="main.js"></script>
+    <script src="services/authService.js"></script>
+    <script src="services/apiService.js"></script>
+    <script src="services/userCredentialService.js"></script>
+    <script src="register/register.controller.js"></script>
+    <script src="polls/user/userPolls.controller.js"></script>
+    <script src="polls/user/createPoll.controller.js"></script>
+    <script src="polls/poll.controller.js"></script>
+    <script src="directives/navigation.directive.js"></script>
+    <script src="directives/navigation.controller.js"></script>
+    <script src="auth/login/login.controller.js"></script>
+    <script src="home/home.controller.js"></script> 
+	
+  </body>
+</html>
 
 
 

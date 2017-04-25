@@ -2,9 +2,11 @@
 angular
   .module("votingApp")
   .controller("loginCtrl" , ['$scope' , '$location' , 'authService' ,
+  
   function ($scope, $location , authService){	
-    $scope.username = "username",
-    $scope.password = "password"
+    
+    $scope.username = "username";
+    $scope.password = "password";
 		
     $scope.login = function(){
       var credentials = {

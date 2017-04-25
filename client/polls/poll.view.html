@@ -1,0 +1,44 @@
+
+<navigation-directive></navigation-directive>
+<div class="container center">
+
+  <h1 class='head'> Poll - {{poll.title}}  </h1>
+  <br/>
+  <div class="col-sm-6">
+   <table class='custom-table'>
+    <tbody>
+       <tr ng-repeat="option in poll.options">
+         <td>
+           <h2>{{option.name}}</h2>
+         </td>
+         <td>
+           {{option.votes}}
+         </td>
+          <td> 
+            <a class='btn btn-success btn-md' ng-click='vote(option)'>
+              <i class="fa fa-thumbs-up"></i> Vote
+            </a>
+          </td>
+      </tr>
+    <tfoot>
+      <tr>
+        <td>enter new option : </td> 
+        <td><input type="text" name="optionName" id="optionName" class="form-control" ng-model="noption.name"/></td>
+        <td><a class="btn btn-info" ng-click="addOption()">
+            <i class="fa fa-plus"></i> Add Option</a></td>   
+      </tr>
+  </tfoot>
+    </tbody>
+  </table>
+  </div>
+  <div class="col-sm-6">
+  <canvas id="doughnut" class="chart chart-doughnut"
+  chart-data="data" chart-labels="labels" chart-legend="true">
+    
+</canvas> 
+  </div>
+
+</div>
+
+
+

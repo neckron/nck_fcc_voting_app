@@ -1,9 +1,24 @@
 
 <navigation-directive></navigation-directive>
-<div class="container">
+<div class="container center">
 
   <h1> create Polls </h1>
-  <h2>{{username}} </h2> 
+  <h2>{{username}} </h2>
+
+  <div>
+    <form ng-submit="savePoll()">
+      <input type="text" name="title" id="title" class="form-control" ng-model="pollName" required /> 
+      <h3>Options</h3>
+       <input type="text" name="optionName" id="optionName" class="form-control" ng-model="option.name"  />
+       <a class="btn" ng-click="addOption()">Add Option</a></td>
+       <div ng-repeat="option in pollOptions">
+         <p>{{option}}</p>
+       </div>
+       	<div align="center">
+	  <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Create Poll</button>	
+        </div>
+    </form>
+  </div> 
 </div>
 
 

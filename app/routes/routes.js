@@ -7,7 +7,9 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 
 router.post('/user/login', ctrlAuth.login);
-router.post('/user/register', ctrlAuth.register)
+router.post('/user/register', ctrlAuth.register);
+router.get('/polls' ,PollsCtrl.findPolls);
+
 
 router.use(function(req, res, next) {
 

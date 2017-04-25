@@ -2,9 +2,26 @@ var mongoose = require('mongoose');
 var Poll = require('../models/Poll');
 
 
-//GET - Return all polls -----------------------------------------
+//GET - Return all user polls -----------------------------------------
 exports.findUserPolls = function(req, res) {  
     Poll.find({'user': req.params.username},function(err, polls) {
+    if(err){
+	    res.send(500, err.message);
+    }else{
+	if(polls.length > 0) {   
+    		console.log('GET /polls/'+req.params.username)
+        	res.status(200).jsonp(polls);
+	}else{
+		console.log('GET /polls/'+req.params.username)
+        	res.status(400).jsonp(polls);		
+	}
+    }
+    });
+};
+
+//GET - Return all polls -----------------------------------------
+exports.findPolls = function(req, res) {  
+    Poll.find({},function(err, polls) {
     if(err){
 	    res.send(500, err.message);
     }else{
@@ -22,6 +39,7 @@ exports.findUserPolls = function(req, res) {
 //POST - Create poll ----------------------------------------------
 exports.createPoll = function(req , res){
 	console.log('POST');
+        console.log(req.body);
 	var poll = new Poll({
 		user : req.body.user,
 		options : req.body.options,
