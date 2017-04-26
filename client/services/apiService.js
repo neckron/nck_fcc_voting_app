@@ -42,13 +42,33 @@ angular
         }
       })
     }
-   
-    
+  
+    //function that retrieves a poll by given id -------------------------
+    pollById = function(id){
+      return $http.get('api/poll/'+id)
+        .then(function(res){
+          return res.data
+      });
+    }
+
+    // function that updates poll status ---------------------------------------
+    updatePoll = function(pollId , poll){
+      console.log('ngcontroller' + poll);
+      return $http.put('api/polls/'+pollId , poll ,{
+        headers : {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'x-access-token' : userCredentialService.getToken()
+        }
+      });
+    }
+
     return {
-    userPolls : userPolls,
-    deletePoll : deletePoll,
-    polls : polls,
-    createPoll : createPoll
-  };
+      userPolls : userPolls,
+      deletePoll : deletePoll,
+      polls : polls,
+      createPoll : createPoll,
+      pollById : pollById,
+      updatePoll : updatePoll
+    };
 		
 }]);

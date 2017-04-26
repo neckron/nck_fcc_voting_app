@@ -1,5 +1,6 @@
-var app = angular.module("votingApp", ["ngRoute" , "chart.js"])
-  .config(function($routeProvider) {
+var app = angular.module("votingApp", ["ngRoute" , "chart.js", "angular-growl"]);
+
+app.config(function($routeProvider) {
     $routeProvider
     .when("/login", {
         templateUrl : '/auth/login/login.view.html',
@@ -25,8 +26,31 @@ var app = angular.module("votingApp", ["ngRoute" , "chart.js"])
         templateUrl : '/home/home.view.html',
         controller : 'homeCtrl'
     })
-    .when("/poll", {
+    .when("/poll/:id", {
         templateUrl : "/polls/poll.view.html",
         controller : 'pollCtrl'
     });
-}); 
+});
+
+app.config(function(growlProvider) {
+  console.log('configure growl')
+  growlProvider.globalTimeToLive(5000);
+  growlProvider.globalPosition('top-right');
+})
+
+;
+
+app.run(function($rootScope, $location, userCredentialService){
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+      if ($location.path() === '/profile' && !userCredentialService.isLoggedIn()) {
+        $location.path('/');
+      }
+      
+      if ($location.path() === '/createPoll' && !userCredentialService.isLoggedIn()) {
+        console.log('cant access');
+        $location.path('/');
+      }
+
+    });
+})
+

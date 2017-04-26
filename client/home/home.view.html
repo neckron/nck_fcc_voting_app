@@ -11,9 +11,9 @@
     <tbody>
       <tr ng-repeat="poll in userPolls">
         <td>{{poll.title}}</td>
-        <td> <a href="#poll" class='btn btn-primary btn-sm' ng-click='selectPoll(poll)'><i class="fa fa-Rocket"></i> View</a></td>
-        <td ng-show='loggedIn'>
-          <a class="btn btn-danger btn-sm" ng-click="delete(poll)"><i class="fa fa-times"></i>Delete</a>
+        <td> <a ng-href="#poll/{{poll._id}}" class='btn btn-primary btn-sm'><i class="fa fa-Rocket"></i> View</a></td>
+        <td>
+          {{poll.user}}
         </td>
       </tr>
     </tbody>

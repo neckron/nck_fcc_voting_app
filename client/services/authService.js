@@ -9,7 +9,7 @@ app.service('authService', ['$http' , 'userCredentialService' ,
       return $http.post('api/user/login', credentials)
         .then(function (res) {
 	  userCredentialService.saveToken(res.data.token);
-          return res.data;
+          return res;
         }, function(res){
 	  return res.data;      
         });

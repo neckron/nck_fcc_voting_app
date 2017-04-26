@@ -1,19 +1,23 @@
 
 <navigation-directive></navigation-directive>
-<div class="container">
+<div class="container center login-box">
 
-  <table>
-    <thead>
-      <tr><th colspan="4">User polls</th></tr>
-    </thead>
+  <h1 class='head'> My Polls </h1>
+  <a href="#createPoll" class='btn btn-info'>
+    <i class="fa fa-plus"></i> Create a new Poll
+  </a>
+
+   <table class='custom-table'>
     <tbody>
       <tr ng-repeat="poll in userPolls">
         <td>{{poll.title}}</td>
-        <td> <a href="editPoll">Edit</a></td>
-        <td><a class="btn" ng-click="delete(poll)">Delete</a></td>
+        <td> <a href="#poll/{{poll._id}}" class='btn btn-primary btn-sm' ng-click='selectPoll(poll)'><i class="fa fa-Rocket"></i> View</a></td>
+        <td><a class="btn btn-danger btn-sm" ng-click="delete(poll)">Delete</a></td>
       </tr>
-      <td> <a href="#createPoll">Create a new Poll</a></td>
     </tbody>
-  </table> 
+  </table>
 </div>
+
+
+
 

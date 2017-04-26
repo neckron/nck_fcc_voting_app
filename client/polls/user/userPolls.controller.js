@@ -1,9 +1,9 @@
 
 angular
   .module("votingApp")
-  .controller("userPollsCtrl" , ['$scope' , '$location' , 'apiService' , 'userCredentialService' ,
+  .controller("userPollsCtrl" , ['$scope' , '$location' , 'apiService' , 'userCredentialService' , 'growl' ,
   
-  function ($scope, $location , apiService, userCredentialService){	
+  function ($scope, $location , apiService, userCredentialService, growl){	
   
     $scope.userPolls = [];
     var user = userCredentialService.currentUser();
@@ -22,7 +22,9 @@ angular
 
       apiService.deletePoll(poll._id)
       .then(function(response){
-	$scope.userPolls = response.data;
+        console.log(response.data);
+        $scope.userPolls.splice(pollToDelete,1);
+        growl.success('Poll deleted');
       }), function(response){
   	console.log('error llamando al api');	
       }

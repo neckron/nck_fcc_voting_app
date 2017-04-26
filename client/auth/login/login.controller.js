@@ -1,12 +1,14 @@
 
 angular
   .module("votingApp")
-  .controller("loginCtrl" , ['$scope' , '$location' , 'authService' ,
-  
-  function ($scope, $location , authService){	
+  .controller("loginCtrl" , ['$scope' , '$location' , 'authService' , 'growl',
     
-    $scope.username = "username";
-    $scope.password = "password";
+  
+  function ($scope, $location , authService , growl){	
+    
+    $scope.username = "";
+    $scope.password = "";
+    $scope.message = "";
 		
     $scope.login = function(){
       var credentials = {
@@ -16,9 +18,14 @@ angular
       
       authService.login(credentials)
         .then(function(response){
-	  $location.path('register');
+          if(response.status == 401){
+            growl.error(response.message);
+          }else{
+            growl.success('Welcome ');
+            $location.path('/');
+          }
 	}), function(response){
-  	  console.log('error llamando al api');	
+  	  growl.error('Unexpected error');	
 	}
       }
 

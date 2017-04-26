@@ -1,9 +1,9 @@
 
 angular
   .module("votingApp")
-  .controller("createPollCtrl" , ['$scope' , '$location' , 'apiService' , 'userCredentialService' ,
+  .controller("createPollCtrl" , ['$scope' , '$location' , 'apiService' , 'userCredentialService' , 'growl' ,
   
-  function ($scope, $location , apiService , userCredentialService){	
+  function ($scope, $location , apiService , userCredentialService , growl){	
     $scope.pollName = "";
     $scope.option = {
       name : '',
@@ -21,11 +21,12 @@ angular
     }
 
     $scope.savePoll = function(){
-      var poll = {
-        user : userCredentialService.currentUser().email,
-        options :  $scope.pollOptions,
-        title : $scope.pollName
-      };
+      if($scope.pollOptions.length > 0){
+        var poll = {
+          user : userCredentialService.currentUser().email,
+          options :  $scope.pollOptions,
+          title : $scope.pollName
+        };
 
       apiService.createPoll(JSON.stringify(poll))
         .then(function(response){
@@ -33,8 +34,11 @@ angular
 	}), function(response){
   	  console.log('error llamando al api');	
 	}
-      
-
+        $location.path('/userPolls');
+        growl.success('Poll created');
+      }else{
+        growl.error('You have to add some options!');
+      }
     }
 
 }]);

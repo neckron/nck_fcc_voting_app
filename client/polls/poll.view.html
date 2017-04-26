@@ -21,7 +21,7 @@
           </td>
       </tr>
     <tfoot>
-      <tr>
+      <tr ng-show='loggedIn'>
         <td>enter new option : </td> 
         <td><input type="text" name="optionName" id="optionName" class="form-control" ng-model="noption.name"/></td>
         <td><a class="btn btn-info" ng-click="addOption()">

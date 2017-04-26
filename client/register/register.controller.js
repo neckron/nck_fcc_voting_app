@@ -3,9 +3,9 @@ angular
   .controller("registerCtrl" , ['$scope' , '$location', 'authService' ,
   
   function ($scope, $location , authService){	
-    $scope.email = "email";
-    $scope.name = "name";
-    $scope.password = 'password'	
+    $scope.email = "";
+    $scope.name = "";
+    $scope.password = ''	
 	
     $scope.register = function(){
       var user = {

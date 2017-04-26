@@ -11,13 +11,15 @@ passport.use(new LocalStrategy({
       // Return if user not found in database
       if (!user) {
         return done(null, false, {
-          message: 'User not found'
+          message: 'User not found',
+          status : 401
         });
       }
       // Return if password is wrong
       if (!user.validPassword(password)) {
         return done(null, false, {
-          message: 'Password is wrong'
+          message: 'Password is wrong',
+          status : 401
         });
       }
       // If credentials are correct, return the user object

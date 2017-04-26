@@ -1,19 +1,29 @@
 
 angular
   .module("votingApp")
-  .controller("pollCtrl" , ['$scope' , '$location' , 'apiService' , '$rootScope' ,
+  .controller("pollCtrl" , ['$scope' , '$location' , 'apiService' , '$routeParams' , 'userCredentialService' ,
   
-  function ($scope, $location , apiService , $rootScope){	
+  function ($scope, $location , apiService , $routeParams, userCredentialService){	
     
-    $scope.poll = $rootScope.selectedPoll;
+    $scope.poll = ''; 
+    $scope.loggedIn = userCredentialService.isLoggedIn();
+    
+    apiService.pollById($routeParams.id)
+      .then(function(response){
+        $scope.poll = response;
+        refreshChart();
+      }), function(response){
+        console.log('cant find poll');
+      }
+    
     $scope.noption = {
-      name : 'nombre',
+      name : '',
       votes : 0
     };
 
     $scope.labels = [];
     $scope.data = [];
-    refreshChart();
+    
 
     $scope.addOption = function(){
       console.log($scope.noption)
@@ -23,14 +33,18 @@ angular
         name : 'nombre',
         votes : 0
       };
-      refreshChart();
+      updatePoll();
+      //refreshChart();
     }
 
     $scope.vote = function(option){
       option.votes = option.votes+1;
       refreshChart();
+      updatePoll();
     }
    
+    // utility functions -----------------------------------------
+
     function refreshChart(){
       $scope.labels = [];
       $scope.data = [];
@@ -40,6 +54,16 @@ angular
          $scope.data.push($scope.poll.options[i].votes);
          console.log($scope.labels);
         console.log($scope.data);
+      }
+    }
+
+    function updatePoll(){
+      console.log($scope.poll)
+      apiService.updatePoll($routeParams.id ,JSON.stringify($scope.poll))
+      .then(function(response){
+        console.log('updated');
+      }), function(response){
+        console.log('cant find poll');
       }
     }
     

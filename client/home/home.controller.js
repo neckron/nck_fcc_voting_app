@@ -1,12 +1,11 @@
 
 angular
   .module("votingApp")
-  .controller("homeCtrl" , ['$scope' , '$location' , 'apiService' , '$rootScope' , 'userCredentialService' ,  
+  .controller("homeCtrl" , ['$scope' , '$location' , 'apiService' , 'userCredentialService' ,  
     
-  function ($scope, $location , apiService , $rootScope , userCredentialService){
+  function ($scope, $location , apiService , userCredentialService){
 
     $scope.userPolls = [];
-    $rootScope.selectedPoll = "";
     $scope.loggedIn = userCredentialService.isLoggedIn();
 
     apiService.polls()
@@ -15,13 +14,6 @@ angular
       }), function(response){
   	console.log('error llamando al api');	
       }
-
-    $scope.selectPoll = function(poll){
-      $rootScope.selectedPoll = poll;
-      console.log(poll);
-    }
-
-    
 
 }]);
 

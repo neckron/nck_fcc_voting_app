@@ -1,17 +1,19 @@
 
 <navigation-directive></navigation-directive>
 <div class="container login-center login-box">
-	<div class="row login_box">
+	<div class="row">
 	  <div class="col-md-12 col-xs-12" align="center">
           <div class="outter"><img src="img/glyph.png" width="200" height="120"/></div>   
 	</div>
         <br/>
         <div class="row">
+          <body>
+</body>
           <h1 class="head"> Voting App </h1>
         </div>
         
         <div class="col-md-12 col-xs-12 login_control">
-                	<form name="form" ng-submit="login()" role="form">
+            <form name="form" ng-submit="login()" role="form">
                 <div class="form-group">
 		  <label for="username" class="cols-sm-2 control-label">Username</label>	    					<div class="cols-sm-10">
                     <div class="input-group">
@@ -34,9 +36,13 @@
 		 <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-info">
                   <i class="fa fa-key"></i>  
                    Login
-                 </button>	
+                 </button>
+                 <a href="#register" class="btn btn-success">
+                  <i class="fa fa-paper-plane-o"></i>  
+                   Click for register
+                 </a>        
                 </div>
-			</form>
+	    </form>
         </div>
         
         

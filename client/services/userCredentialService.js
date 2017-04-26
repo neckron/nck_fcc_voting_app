@@ -44,7 +44,7 @@ angular
     };
 
     logout = function() {
-      $window.localStorage.removeItem('mean-token');
+      $window.localStorage.removeItem('token');
     };
 
   return {
