@@ -71,27 +71,20 @@ exports.deletePoll = function(req , res){
 //PUT - Update a poll -------------------------------------------
 exports.updatePoll = function(req,res){
   console.log('PUT');
-  var poll ='';
   Poll.findById(req.params.id, function(err, p) {
-    console.log('founded poll'+p);
-    console.log('must be'+req.body);
+    console.log(req.body);
     if (!p)
       res.status(500).send(err.message);
     else {
-      poll = p;
+      p.options = req.body.options;
+      p.save(function(err) {
+        if (err)
+          res.status(500).send( err.message);
+        else
+          res.status(200).jsonp(p);
+      });
     }
   });	
-
-  console.log('body ' + req.body.options)  
-  console.log('body ' + req.body)
-  console.log('body ' + req)
- poll.save(function(err) {
-   if (err)
-     res.status(500).send( err.message);
-   else
-     res.status(200).jsonp(p);
- });
-
 };
 
 //GET - Get Poll by Id -------------------------------------------------

@@ -10,6 +10,7 @@ router.post('/user/login', ctrlAuth.login);
 router.post('/user/register', ctrlAuth.register);
 router.get('/polls' ,PollsCtrl.findPolls);
 router.get('/poll/:id' ,PollsCtrl.findPollById);
+router.put('/polls/:id',PollsCtrl.updatePoll);
 
 router.use(function(req, res, next) {
 
@@ -30,29 +31,17 @@ router.use(function(req, res, next) {
     });
 
   } else {
-
-    // if there is no token
-    // return an error
     return res.status(403).send({ 
-        success: false, 
-        message: 'No token provided.' 
+      success: false, 
+      message: 'No token provided.' 
     });
     
   }
 });
 	
 router.route('/polls').post(PollsCtrl.createPoll);
-
-router.route('/polls/:id')
-	.delete(PollsCtrl.deletePoll)
-	.put(PollsCtrl.updatePoll);
-
-router.route('/polls/:username')
-	.get(PollsCtrl.findUserPolls);
-
-;
-
-
+router.route('/polls/:id').delete(PollsCtrl.deletePoll);
+router.route('/polls/:username').get(PollsCtrl.findUserPolls);
 router.get('/user/profile/:username', ctrlProfile.profileRead);
 
 module.exports = router;

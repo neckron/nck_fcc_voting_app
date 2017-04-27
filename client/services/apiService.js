@@ -56,7 +56,7 @@ angular
       console.log('ngcontroller' + poll);
       return $http.put('api/polls/'+pollId , poll ,{
         headers : {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
           'x-access-token' : userCredentialService.getToken()
         }
       });
