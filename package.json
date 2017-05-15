@@ -20,7 +20,9 @@
     "method-override": "^2.1.3",
     "mongoose": "^4.4.12",
     "morgan": "^1.1.1" , 
-    "jsonwebtoken" : "latest"
+    "jsonwebtoken" : "latest",
+    "passport" : "latest",
+    "passport-local" : "latest"
   },
   "license": "ISC"
 }
