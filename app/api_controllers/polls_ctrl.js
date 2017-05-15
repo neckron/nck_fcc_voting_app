@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');  
-var Poll = require('../models/Poll');
+var Poll = require('../models/Poll1');
 
 
 //GET - Return all user polls -----------------------------------------
